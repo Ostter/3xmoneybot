@@ -3,7 +3,7 @@
 Bot Telegram returns the current exchange rate to the RUB.
 
 # install
-add misc.py file with dict tokens
+add misc.py file to the program folder with dict tokens
 ***
 tokens = {
     'telegram': '...telegram token...',
@@ -11,5 +11,5 @@ tokens = {
 }
 ***
 
-```bash
-python3 bot.py
+# run
+FLASK_APP=main.py flask run

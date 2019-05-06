@@ -6,8 +6,8 @@ Bot Telegram returns the current exchange rate to the RUB.
 add misc.py file to the program folder with dict tokens
 ***
 tokens = {
-    'telegram': '...telegram token...',
-    'currate': '...currate.ru token...'
+    'telegram': '>>>telegram token<<<',
+    'currconv': '>>>free.currconv.com token<<<'
 }
 ***
 

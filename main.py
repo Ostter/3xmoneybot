@@ -5,7 +5,7 @@ import re
 from misc import tokens
 
 telegram_token = tokens['telegram']
-currate_token = tokens['currate']
+currconv_token = tokens['currconv']
 
 URL = 'https://api.telegram.org/bot' + telegram_token + '/'
 
@@ -34,7 +34,7 @@ def index():
         elif bool(re.search(patternBye, text.lower())):
             send_message(chat_id, 'Ну ты заходи если чо')
         else:
-            rate = get_rate(text)
+            rate = get_rate(text.upper())
             send_message(chat_id, text=rate)
 
         return jsonify(response)
@@ -43,11 +43,11 @@ def index():
 
 
 def get_rate(currency):
-    pair = currency.upper() + 'RUB'
-    url = 'https://currate.ru/api/?get=rates&pairs=' + pair + '&key=' + currate_token
+    pair = currency + '_RUB'
+    url = 'https://free.currconv.com/api/v7/convert?q=' + pair + '&compact=ultra&apiKey=' + currconv_token
     response = requests.get(url).json()
-    if response['status'] == 200:
-        return response['data'][pair]
+    if pair in response:
+        return response[pair]
     else:
         return 'У меня нет данных. Попробуй другой код валюты'
 
